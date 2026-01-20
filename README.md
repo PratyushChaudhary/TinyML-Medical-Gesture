@@ -250,51 +250,51 @@ Blue LED → 220Ω → GPIO27 → GND
 3. Upload sketch from `wokwi_simulation/sketch.ino`
 4. Open Serial Monitor at 115200 baud to view predictions
 
-## Project Structure
-tinyml-gesture-recognition/
-├── captures/ # Edge Impulse performance screenshots
-│ ├── confusion_matrix.png
-│ ├── feature_explorer.png
-│ ├── model_testing.png
-│ └── on_device_performance.png
-│
-├── data_preparation.py # Load and preprocess Kaggle dataset
-├── visualizations.py # Generate signal plots and distributions
-│
-├── model_quantization.py # TFLite conversion and optimization
-├── optimization_visualizations.py # Create comparison charts
-│
-├── generate_enhanced_mri.py # Synthetic medical image generation
-├── mri_gesture_viewer.py # Interactive GUI application
-│
-├── wokwi_simulation/
-│ ├── sketch.ino # Arduino code for ESP32
-│ ├── diagram.json # Wokwi circuit configuration
-│ ├── circuit_screenshot.png # Visual reference
-│ └── README.md # Hardware-specific documentation
-│
-├── tflite_models/
-│ └── tflite_learn_881836_3.tflite # Quantized model (20KB)
-│
-├── presentation_figures/ # Generated visualizations
-│ ├── 1_signal_comparison.png
-│ ├── 2_class_distribution.png
-│ ├── 3_multi_imu_fusion.png
-│ ├── 4_optimization_comparison.png
-│ └── 5_memory_footprint.png
-│
-├── processed_data/
-│ └── complete_dataset.csv # Cleaned and organized sensor data
-│
-├── mri_images/ # Synthetic brain scan stack
-│ ├── brain_slice_000.png
-│ ├── brain_slice_001.png
-│ └── ... (30 slices total)
-│
-├── requirements.txt # Python dependencies
-└── README.md # This file
-
-
+## Project Structure  
+tinyml-gesture-recognition/  
+├── captures/ # Edge Impulse performance screenshots  
+│ ├── confusion_matrix.png  
+│ ├── feature_explorer.png  
+│ ├── model_testing.png  
+│ └── on_device_performance.png  
+│  
+├── data_preparation.py # Load and preprocess Kaggle dataset  
+├── visualizations.py # Generate signal plots and distributions  
+│  
+├── model_quantization.py # TFLite conversion and optimization  
+├── optimization_visualizations.py # Create comparison charts  
+│  
+├── generate_enhanced_mri.py # Synthetic medical image generation  
+├── mri_gesture_viewer.py # Interactive GUI application  
+│  
+├── wokwi_simulation/  
+│ ├── sketch.ino # Arduino code for ESP32  
+│ ├── diagram.json # Wokwi circuit configuration  
+│ ├── circuit_screenshot.png # Visual reference  
+│ └── README.md # Hardware-specific documentation  
+│  
+├── tflite_models/     
+│ └── tflite_learn_881836_3.tflite # Quantized model (20KB)    
+│    
+├── presentation_figures/ # Generated visualizations      
+│ ├── 1_signal_comparison.png    
+│ ├── 2_class_distribution.png   
+│ ├── 3_multi_imu_fusion.png   
+│ ├── 4_optimization_comparison.png   
+│ └── 5_memory_footprint.png   
+│   
+├── processed_data/   
+│ └── complete_dataset.csv # Cleaned and organized sensor data   
+│   
+├── mri_images/ # Synthetic brain scan stack   
+│ ├── brain_slice_000.png   
+│ ├── brain_slice_001.png   
+│ └── ... (30 slices total)   
+│   
+├── requirements.txt # Python dependencies   
+└── README.md # This file   
+   
+   
 ## Getting Started
 
 ### Prerequisites
@@ -306,7 +306,7 @@ pip install -r requirements.txt
 
 Quick Start   
 1. Data Preparation:   
-
+    
 bash   
 python data_preparation.py   
 python visualizations.py   
