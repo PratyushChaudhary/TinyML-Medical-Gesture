@@ -1,0 +1,107 @@
+####################################
+# OS / Editor junk
+####################################
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+*.tmp
+*.bak
+.idea/
+.vscode/
+
+####################################
+# Python
+####################################
+__pycache__/
+*.py[cod]
+*.pyo
+.env
+.venv
+venv/
+ENV/
+pip-wheel-metadata/
+.pytest_cache/
+.mypy_cache/
+
+####################################
+# C / C++ / CMake build artifacts
+####################################
+build/
+build-*/
+cmake-build-*/
+CMakeFiles/
+CMakeCache.txt
+cmake_install.cmake
+Makefile
+*.o
+*.obj
+*.a
+*.so
+*.dll
+*.dylib
+*.exe
+*.elf
+*.map
+
+####################################
+# Arduino / PlatformIO
+####################################
+*.hex
+*.bin
+*.elf
+*.eep
+*.lst
+*.map
+*.log
+*.tmp
+*.lock
+.pio/
+.pioenvs/
+.piolibdeps/
+
+####################################
+# Edge Impulse / Embedded ML
+####################################
+edge-impulse-sdk/**/build/
+edge-impulse-sdk/**/CMakeFiles/
+edge-impulse-sdk/**/.cache/
+
+####################################
+# Model artifacts
+####################################
+tflite-model/*.tflite
+
+####################################
+# Data & datasets
+####################################
+processed_data/
+mri_images/
+*.csv
+
+####################################
+# Logs & outputs
+####################################
+logs/
+*.log
+*.out
+
+####################################
+# Simulation artifacts
+####################################
+wokwi_simulation/.cache/
+wokwi_simulation/*.log
+
+####################################
+# Temporary exports
+####################################
+*.zip
+*.tar
+*.tar.gz
+*.7z
+
+####################################
+# Node-style deps (future-proofing)
+####################################
+node_modules/
+
