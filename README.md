@@ -304,30 +304,30 @@ Python 3.8+
 pip install -r requirements.txt
 ```
 
-Quick Start
-1. Data Preparation:
+Quick Start   
+1. Data Preparation:   
 
-bash
-python data_preparation.py
-python visualizations.py
-2. Generate MRI Images:
-
-bash
-python generate_enhanced_mri.py
-3. Run Interactive Demo:
-
-bash
-python mri_gesture_viewer.py
-4. Explore Hardware Simulation:
-Visit Wokwi and load the files from wokwi_simulation/
-
-Full Workflow
-For complete model training and deployment:
-
-Download the IMU Glove dataset
-Run data preparation scripts
-Upload processed CSV to Edge Impulse
-Configure spectral analysis and train 1D CNN
-Export quantized TFLite model
-Deploy to embedded hardware or run Python simulation
-
+bash   
+python data_preparation.py   
+python visualizations.py   
+2. Generate MRI Images:   
+  
+bash   
+python generate_enhanced_mri.py   
+3. Run Interactive Demo:   
+   
+bash   
+python mri_gesture_viewer.py   
+4. Explore Hardware Simulation:    
+Visit Wokwi and load the files from wokwi_simulation/    
+   
+Full Workflow   
+For complete model training and deployment:   
+   
+Download the IMU Glove dataset   
+Run data preparation scripts   
+Upload processed CSV to Edge Impulse    
+Configure spectral analysis and train 1D CNN   
+Export quantized TFLite model    
+Deploy to embedded hardware or run Python simulation    
+  
