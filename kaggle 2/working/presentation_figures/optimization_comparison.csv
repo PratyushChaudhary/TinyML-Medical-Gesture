@@ -1,0 +1,5 @@
+Metric,Float32 (Standard),Int8 (Quantized),Reduction
+Flash Usage,112.0 KB,28.0 KB,↓ 75.0%
+RAM Usage,18.0 KB,4.5 KB,↓ 75.0%
+Latency,4.2 ms,3.2 ms,↓ 23.1%
+Accuracy,93.0%,92.5%,↓ 0.5% loss

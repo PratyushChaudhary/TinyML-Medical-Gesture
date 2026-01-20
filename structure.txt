@@ -1,0 +1,1564 @@
+.
+├── .DS_Store
+├── arduino_deployment
+│   └── model.h
+├── CMakeLists.txt
+├── configure.py
+├── edge-impulse-sdk
+│   ├── .DS_Store
+│   ├── .gitignore
+│   ├── .mbedignore
+│   ├── classifier
+│   │   ├── ei_aligned_malloc.h
+│   │   ├── ei_classifier_config.h
+│   │   ├── ei_classifier_smooth.h
+│   │   ├── ei_classifier_types.h
+│   │   ├── ei_constants.h
+│   │   ├── ei_data_normalization.h
+│   │   ├── ei_model_types.h
+│   │   ├── ei_nms.h
+│   │   ├── ei_print_results.h
+│   │   ├── ei_quantize.h
+│   │   ├── ei_run_classifier_c.cpp
+│   │   ├── ei_run_classifier_c.h
+│   │   ├── ei_run_classifier_image.h
+│   │   ├── ei_run_classifier.h
+│   │   ├── ei_run_dsp.h
+│   │   ├── ei_signal_with_axes.h
+│   │   ├── ei_signal_with_range.h
+│   │   ├── inferencing_engines
+│   │   │   ├── akida.h
+│   │   │   ├── anomaly.h
+│   │   │   ├── aton.h
+│   │   │   ├── ceva_npn.h
+│   │   │   ├── drpai.h
+│   │   │   ├── engines.h
+│   │   │   ├── ethos_linux.h
+│   │   │   ├── memryx.h
+│   │   │   ├── nordic_axon.h
+│   │   │   ├── onnx_tidl.h
+│   │   │   ├── tensaiflow.h
+│   │   │   ├── tensorrt.h
+│   │   │   ├── tflite_eon.h
+│   │   │   ├── tflite_full.h
+│   │   │   ├── tflite_helper.h
+│   │   │   ├── tflite_micro.h
+│   │   │   └── tflite_tidl.h
+│   │   └── postprocessing
+│   │       ├── alignment
+│   │       │   ├── ei_alignment.hpp
+│   │       │   └── rectangular_lsap.hpp
+│   │       ├── ei_object_counting.h
+│   │       ├── ei_object_tracking.h
+│   │       ├── ei_performance_calibration.h
+│   │       ├── ei_postprocessing_ai_hub.h
+│   │       ├── ei_postprocessing_common.h
+│   │       ├── ei_postprocessing_types.h
+│   │       ├── ei_postprocessing.h
+│   │       └── tinyEKF
+│   │           ├── LICENSE.md
+│   │           ├── tinyekf_custom.h
+│   │           └── tinyekf.hpp
+│   ├── cmake
+│   │   ├── add_source.cmake
+│   │   ├── utils.cmake
+│   │   └── zephyr
+│   │       └── CMakeLists.txt
+│   ├── CMSIS
+│   │   ├── Core
+│   │   │   └── Include
+│   │   │       ├── cachel1_armv7.h
+│   │   │       ├── cmsis_armcc.h
+│   │   │       ├── cmsis_armclang_ltm.h
+│   │   │       ├── cmsis_armclang.h
+│   │   │       ├── cmsis_compiler.h
+│   │   │       ├── cmsis_gcc.h
+│   │   │       ├── cmsis_iccarm.h
+│   │   │       ├── cmsis_version.h
+│   │   │       ├── core_armv81mml.h
+│   │   │       ├── core_armv8mbl.h
+│   │   │       ├── core_armv8mml.h
+│   │   │       ├── core_cm0.h
+│   │   │       ├── core_cm0plus.h
+│   │   │       ├── core_cm1.h
+│   │   │       ├── core_cm23.h
+│   │   │       ├── core_cm3.h
+│   │   │       ├── core_cm33.h
+│   │   │       ├── core_cm35p.h
+│   │   │       ├── core_cm4.h
+│   │   │       ├── core_cm55.h
+│   │   │       ├── core_cm7.h
+│   │   │       ├── core_cm85.h
+│   │   │       ├── core_sc000.h
+│   │   │       ├── core_sc300.h
+│   │   │       ├── core_starmc1.h
+│   │   │       ├── mpu_armv7.h
+│   │   │       ├── mpu_armv8.h
+│   │   │       ├── pac_armv81.h
+│   │   │       ├── pmu_armv8.h
+│   │   │       └── tz_context.h
+│   │   ├── DSP
+│   │   │   ├── Include
+│   │   │   │   ├── arm_common_tables_f16.h
+│   │   │   │   ├── arm_common_tables.h
+│   │   │   │   ├── arm_const_structs_f16.h
+│   │   │   │   ├── arm_const_structs.h
+│   │   │   │   ├── arm_helium_utils.h
+│   │   │   │   ├── arm_math_f16.h
+│   │   │   │   ├── arm_math_memory.h
+│   │   │   │   ├── arm_math_types_f16.h
+│   │   │   │   ├── arm_math_types.h
+│   │   │   │   ├── arm_math.h
+│   │   │   │   ├── arm_mve_tables_f16.h
+│   │   │   │   ├── arm_mve_tables.h
+│   │   │   │   ├── arm_sorting.h
+│   │   │   │   ├── arm_vec_fft.h
+│   │   │   │   ├── arm_vec_filtering.h
+│   │   │   │   ├── arm_vec_math_f16.h
+│   │   │   │   ├── arm_vec_math.h
+│   │   │   │   └── dsp
+│   │   │   │       ├── basic_math_functions_f16.h
+│   │   │   │       ├── basic_math_functions.h
+│   │   │   │       ├── bayes_functions_f16.h
+│   │   │   │       ├── bayes_functions.h
+│   │   │   │       ├── complex_math_functions_f16.h
+│   │   │   │       ├── complex_math_functions.h
+│   │   │   │       ├── controller_functions_f16.h
+│   │   │   │       ├── controller_functions.h
+│   │   │   │       ├── debug.h
+│   │   │   │       ├── distance_functions_f16.h
+│   │   │   │       ├── distance_functions.h
+│   │   │   │       ├── fast_math_functions_f16.h
+│   │   │   │       ├── fast_math_functions.h
+│   │   │   │       ├── filtering_functions_f16.h
+│   │   │   │       ├── filtering_functions.h
+│   │   │   │       ├── interpolation_functions_f16.h
+│   │   │   │       ├── interpolation_functions.h
+│   │   │   │       ├── matrix_functions_f16.h
+│   │   │   │       ├── matrix_functions.h
+│   │   │   │       ├── matrix_utils.h
+│   │   │   │       ├── none.h
+│   │   │   │       ├── quaternion_math_functions.h
+│   │   │   │       ├── statistics_functions_f16.h
+│   │   │   │       ├── statistics_functions.h
+│   │   │   │       ├── support_functions_f16.h
+│   │   │   │       ├── support_functions.h
+│   │   │   │       ├── svm_defines.h
+│   │   │   │       ├── svm_functions_f16.h
+│   │   │   │       ├── svm_functions.h
+│   │   │   │       ├── transform_functions_f16.h
+│   │   │   │       ├── transform_functions.h
+│   │   │   │       └── utils.h
+│   │   │   ├── PrivateInclude
+│   │   │   │   └── README.md
+│   │   │   └── Source
+│   │   │       ├── BasicMathFunctions
+│   │   │       │   ├── arm_abs_f16.c
+│   │   │       │   ├── arm_abs_f32.c
+│   │   │       │   ├── arm_abs_f64.c
+│   │   │       │   ├── arm_abs_q15.c
+│   │   │       │   ├── arm_abs_q31.c
+│   │   │       │   ├── arm_abs_q7.c
+│   │   │       │   ├── arm_add_f16.c
+│   │   │       │   ├── arm_add_f32.c
+│   │   │       │   ├── arm_add_f64.c
+│   │   │       │   ├── arm_add_q15.c
+│   │   │       │   ├── arm_add_q31.c
+│   │   │       │   ├── arm_add_q7.c
+│   │   │       │   ├── arm_and_u16.c
+│   │   │       │   ├── arm_and_u32.c
+│   │   │       │   ├── arm_and_u8.c
+│   │   │       │   ├── arm_clip_f16.c
+│   │   │       │   ├── arm_clip_f32.c
+│   │   │       │   ├── arm_clip_q15.c
+│   │   │       │   ├── arm_clip_q31.c
+│   │   │       │   ├── arm_clip_q7.c
+│   │   │       │   ├── arm_dot_prod_f16.c
+│   │   │       │   ├── arm_dot_prod_f32.c
+│   │   │       │   ├── arm_dot_prod_f64.c
+│   │   │       │   ├── arm_dot_prod_q15.c
+│   │   │       │   ├── arm_dot_prod_q31.c
+│   │   │       │   ├── arm_dot_prod_q7.c
+│   │   │       │   ├── arm_mult_f16.c
+│   │   │       │   ├── arm_mult_f32.c
+│   │   │       │   ├── arm_mult_f64.c
+│   │   │       │   ├── arm_mult_q15.c
+│   │   │       │   ├── arm_mult_q31.c
+│   │   │       │   ├── arm_mult_q7.c
+│   │   │       │   ├── arm_negate_f16.c
+│   │   │       │   ├── arm_negate_f32.c
+│   │   │       │   ├── arm_negate_f64.c
+│   │   │       │   ├── arm_negate_q15.c
+│   │   │       │   ├── arm_negate_q31.c
+│   │   │       │   ├── arm_negate_q7.c
+│   │   │       │   ├── arm_not_u16.c
+│   │   │       │   ├── arm_not_u32.c
+│   │   │       │   ├── arm_not_u8.c
+│   │   │       │   ├── arm_offset_f16.c
+│   │   │       │   ├── arm_offset_f32.c
+│   │   │       │   ├── arm_offset_f64.c
+│   │   │       │   ├── arm_offset_q15.c
+│   │   │       │   ├── arm_offset_q31.c
+│   │   │       │   ├── arm_offset_q7.c
+│   │   │       │   ├── arm_or_u16.c
+│   │   │       │   ├── arm_or_u32.c
+│   │   │       │   ├── arm_or_u8.c
+│   │   │       │   ├── arm_scale_f16.c
+│   │   │       │   ├── arm_scale_f32.c
+│   │   │       │   ├── arm_scale_f64.c
+│   │   │       │   ├── arm_scale_q15.c
+│   │   │       │   ├── arm_scale_q31.c
+│   │   │       │   ├── arm_scale_q7.c
+│   │   │       │   ├── arm_shift_q15.c
+│   │   │       │   ├── arm_shift_q31.c
+│   │   │       │   ├── arm_shift_q7.c
+│   │   │       │   ├── arm_sub_f16.c
+│   │   │       │   ├── arm_sub_f32.c
+│   │   │       │   ├── arm_sub_f64.c
+│   │   │       │   ├── arm_sub_q15.c
+│   │   │       │   ├── arm_sub_q31.c
+│   │   │       │   ├── arm_sub_q7.c
+│   │   │       │   ├── arm_xor_u16.c
+│   │   │       │   ├── arm_xor_u32.c
+│   │   │       │   └── arm_xor_u8.c
+│   │   │       ├── BayesFunctions
+│   │   │       │   ├── arm_gaussian_naive_bayes_predict_f16.c
+│   │   │       │   └── arm_gaussian_naive_bayes_predict_f32.c
+│   │   │       ├── CommonTables
+│   │   │       │   ├── arm_common_tables_f16.c
+│   │   │       │   ├── arm_common_tables.c
+│   │   │       │   ├── arm_const_structs_f16.c
+│   │   │       │   ├── arm_const_structs.c
+│   │   │       │   ├── arm_mve_tables_f16.c
+│   │   │       │   └── arm_mve_tables.c
+│   │   │       ├── ComplexMathFunctions
+│   │   │       │   ├── arm_cmplx_conj_f16.c
+│   │   │       │   ├── arm_cmplx_conj_f32.c
+│   │   │       │   ├── arm_cmplx_conj_q15.c
+│   │   │       │   ├── arm_cmplx_conj_q31.c
+│   │   │       │   ├── arm_cmplx_dot_prod_f16.c
+│   │   │       │   ├── arm_cmplx_dot_prod_f32.c
+│   │   │       │   ├── arm_cmplx_dot_prod_q15.c
+│   │   │       │   ├── arm_cmplx_dot_prod_q31.c
+│   │   │       │   ├── arm_cmplx_mag_f16.c
+│   │   │       │   ├── arm_cmplx_mag_f32.c
+│   │   │       │   ├── arm_cmplx_mag_f64.c
+│   │   │       │   ├── arm_cmplx_mag_fast_q15.c
+│   │   │       │   ├── arm_cmplx_mag_q15.c
+│   │   │       │   ├── arm_cmplx_mag_q31.c
+│   │   │       │   ├── arm_cmplx_mag_squared_f16.c
+│   │   │       │   ├── arm_cmplx_mag_squared_f32.c
+│   │   │       │   ├── arm_cmplx_mag_squared_f64.c
+│   │   │       │   ├── arm_cmplx_mag_squared_q15.c
+│   │   │       │   ├── arm_cmplx_mag_squared_q31.c
+│   │   │       │   ├── arm_cmplx_mult_cmplx_f16.c
+│   │   │       │   ├── arm_cmplx_mult_cmplx_f32.c
+│   │   │       │   ├── arm_cmplx_mult_cmplx_f64.c
+│   │   │       │   ├── arm_cmplx_mult_cmplx_q15.c
+│   │   │       │   ├── arm_cmplx_mult_cmplx_q31.c
+│   │   │       │   ├── arm_cmplx_mult_real_f16.c
+│   │   │       │   ├── arm_cmplx_mult_real_f32.c
+│   │   │       │   ├── arm_cmplx_mult_real_q15.c
+│   │   │       │   └── arm_cmplx_mult_real_q31.c
+│   │   │       ├── ControllerFunctions
+│   │   │       │   ├── arm_pid_init_f32.c
+│   │   │       │   ├── arm_pid_init_q15.c
+│   │   │       │   ├── arm_pid_init_q31.c
+│   │   │       │   ├── arm_pid_reset_f32.c
+│   │   │       │   ├── arm_pid_reset_q15.c
+│   │   │       │   ├── arm_pid_reset_q31.c
+│   │   │       │   ├── arm_sin_cos_f32.c
+│   │   │       │   └── arm_sin_cos_q31.c
+│   │   │       ├── DistanceFunctions
+│   │   │       │   ├── arm_boolean_distance_template.h
+│   │   │       │   ├── arm_boolean_distance.c
+│   │   │       │   ├── arm_braycurtis_distance_f16.c
+│   │   │       │   ├── arm_braycurtis_distance_f32.c
+│   │   │       │   ├── arm_canberra_distance_f16.c
+│   │   │       │   ├── arm_canberra_distance_f32.c
+│   │   │       │   ├── arm_chebyshev_distance_f16.c
+│   │   │       │   ├── arm_chebyshev_distance_f32.c
+│   │   │       │   ├── arm_chebyshev_distance_f64.c
+│   │   │       │   ├── arm_cityblock_distance_f16.c
+│   │   │       │   ├── arm_cityblock_distance_f32.c
+│   │   │       │   ├── arm_cityblock_distance_f64.c
+│   │   │       │   ├── arm_correlation_distance_f16.c
+│   │   │       │   ├── arm_correlation_distance_f32.c
+│   │   │       │   ├── arm_cosine_distance_f16.c
+│   │   │       │   ├── arm_cosine_distance_f32.c
+│   │   │       │   ├── arm_cosine_distance_f64.c
+│   │   │       │   ├── arm_dice_distance.c
+│   │   │       │   ├── arm_euclidean_distance_f16.c
+│   │   │       │   ├── arm_euclidean_distance_f32.c
+│   │   │       │   ├── arm_euclidean_distance_f64.c
+│   │   │       │   ├── arm_hamming_distance.c
+│   │   │       │   ├── arm_jaccard_distance.c
+│   │   │       │   ├── arm_jensenshannon_distance_f16.c
+│   │   │       │   ├── arm_jensenshannon_distance_f32.c
+│   │   │       │   ├── arm_kulsinski_distance.c
+│   │   │       │   ├── arm_minkowski_distance_f16.c
+│   │   │       │   ├── arm_minkowski_distance_f32.c
+│   │   │       │   ├── arm_rogerstanimoto_distance.c
+│   │   │       │   ├── arm_russellrao_distance.c
+│   │   │       │   ├── arm_sokalmichener_distance.c
+│   │   │       │   ├── arm_sokalsneath_distance.c
+│   │   │       │   └── arm_yule_distance.c
+│   │   │       ├── FastMathFunctions
+│   │   │       │   ├── arm_atan2_f16.c
+│   │   │       │   ├── arm_atan2_f32.c
+│   │   │       │   ├── arm_atan2_q15.c
+│   │   │       │   ├── arm_atan2_q31.c
+│   │   │       │   ├── arm_cos_f32.c
+│   │   │       │   ├── arm_cos_q15.c
+│   │   │       │   ├── arm_cos_q31.c
+│   │   │       │   ├── arm_divide_q15.c
+│   │   │       │   ├── arm_divide_q31.c
+│   │   │       │   ├── arm_sin_f32.c
+│   │   │       │   ├── arm_sin_q15.c
+│   │   │       │   ├── arm_sin_q31.c
+│   │   │       │   ├── arm_sqrt_q15.c
+│   │   │       │   ├── arm_sqrt_q31.c
+│   │   │       │   ├── arm_vexp_f16.c
+│   │   │       │   ├── arm_vexp_f32.c
+│   │   │       │   ├── arm_vexp_f64.c
+│   │   │       │   ├── arm_vinverse_f16.c
+│   │   │       │   ├── arm_vlog_f16.c
+│   │   │       │   ├── arm_vlog_f32.c
+│   │   │       │   ├── arm_vlog_f64.c
+│   │   │       │   ├── arm_vlog_q15.c
+│   │   │       │   └── arm_vlog_q31.c
+│   │   │       ├── FilteringFunctions
+│   │   │       │   ├── arm_biquad_cascade_df1_32x64_init_q31.c
+│   │   │       │   ├── arm_biquad_cascade_df1_32x64_q31.c
+│   │   │       │   ├── arm_biquad_cascade_df1_f16.c
+│   │   │       │   ├── arm_biquad_cascade_df1_f32.c
+│   │   │       │   ├── arm_biquad_cascade_df1_fast_q15.c
+│   │   │       │   ├── arm_biquad_cascade_df1_fast_q31.c
+│   │   │       │   ├── arm_biquad_cascade_df1_init_f16.c
+│   │   │       │   ├── arm_biquad_cascade_df1_init_f32.c
+│   │   │       │   ├── arm_biquad_cascade_df1_init_q15.c
+│   │   │       │   ├── arm_biquad_cascade_df1_init_q31.c
+│   │   │       │   ├── arm_biquad_cascade_df1_q15.c
+│   │   │       │   ├── arm_biquad_cascade_df1_q31.c
+│   │   │       │   ├── arm_biquad_cascade_df2T_f16.c
+│   │   │       │   ├── arm_biquad_cascade_df2T_f32.c
+│   │   │       │   ├── arm_biquad_cascade_df2T_f64.c
+│   │   │       │   ├── arm_biquad_cascade_df2T_init_f16.c
+│   │   │       │   ├── arm_biquad_cascade_df2T_init_f32.c
+│   │   │       │   ├── arm_biquad_cascade_df2T_init_f64.c
+│   │   │       │   ├── arm_biquad_cascade_stereo_df2T_f16.c
+│   │   │       │   ├── arm_biquad_cascade_stereo_df2T_f32.c
+│   │   │       │   ├── arm_biquad_cascade_stereo_df2T_init_f16.c
+│   │   │       │   ├── arm_biquad_cascade_stereo_df2T_init_f32.c
+│   │   │       │   ├── arm_conv_f32.c
+│   │   │       │   ├── arm_conv_fast_opt_q15.c
+│   │   │       │   ├── arm_conv_fast_q15.c
+│   │   │       │   ├── arm_conv_fast_q31.c
+│   │   │       │   ├── arm_conv_opt_q15.c
+│   │   │       │   ├── arm_conv_opt_q7.c
+│   │   │       │   ├── arm_conv_partial_f32.c
+│   │   │       │   ├── arm_conv_partial_fast_opt_q15.c
+│   │   │       │   ├── arm_conv_partial_fast_q15.c
+│   │   │       │   ├── arm_conv_partial_fast_q31.c
+│   │   │       │   ├── arm_conv_partial_opt_q15.c
+│   │   │       │   ├── arm_conv_partial_opt_q7.c
+│   │   │       │   ├── arm_conv_partial_q15.c
+│   │   │       │   ├── arm_conv_partial_q31.c
+│   │   │       │   ├── arm_conv_partial_q7.c
+│   │   │       │   ├── arm_conv_q15.c
+│   │   │       │   ├── arm_conv_q31.c
+│   │   │       │   ├── arm_conv_q7.c
+│   │   │       │   ├── arm_correlate_f16.c
+│   │   │       │   ├── arm_correlate_f32.c
+│   │   │       │   ├── arm_correlate_f64.c
+│   │   │       │   ├── arm_correlate_fast_opt_q15.c
+│   │   │       │   ├── arm_correlate_fast_q15.c
+│   │   │       │   ├── arm_correlate_fast_q31.c
+│   │   │       │   ├── arm_correlate_opt_q15.c
+│   │   │       │   ├── arm_correlate_opt_q7.c
+│   │   │       │   ├── arm_correlate_q15.c
+│   │   │       │   ├── arm_correlate_q31.c
+│   │   │       │   ├── arm_correlate_q7.c
+│   │   │       │   ├── arm_fir_decimate_f32.c
+│   │   │       │   ├── arm_fir_decimate_fast_q15.c
+│   │   │       │   ├── arm_fir_decimate_fast_q31.c
+│   │   │       │   ├── arm_fir_decimate_init_f32.c
+│   │   │       │   ├── arm_fir_decimate_init_q15.c
+│   │   │       │   ├── arm_fir_decimate_init_q31.c
+│   │   │       │   ├── arm_fir_decimate_q15.c
+│   │   │       │   ├── arm_fir_decimate_q31.c
+│   │   │       │   ├── arm_fir_f16.c
+│   │   │       │   ├── arm_fir_f32.c
+│   │   │       │   ├── arm_fir_f64.c
+│   │   │       │   ├── arm_fir_fast_q15.c
+│   │   │       │   ├── arm_fir_fast_q31.c
+│   │   │       │   ├── arm_fir_init_f16.c
+│   │   │       │   ├── arm_fir_init_f32.c
+│   │   │       │   ├── arm_fir_init_f64.c
+│   │   │       │   ├── arm_fir_init_q15.c
+│   │   │       │   ├── arm_fir_init_q31.c
+│   │   │       │   ├── arm_fir_init_q7.c
+│   │   │       │   ├── arm_fir_interpolate_f32.c
+│   │   │       │   ├── arm_fir_interpolate_init_f32.c
+│   │   │       │   ├── arm_fir_interpolate_init_q15.c
+│   │   │       │   ├── arm_fir_interpolate_init_q31.c
+│   │   │       │   ├── arm_fir_interpolate_q15.c
+│   │   │       │   ├── arm_fir_interpolate_q31.c
+│   │   │       │   ├── arm_fir_lattice_f32.c
+│   │   │       │   ├── arm_fir_lattice_init_f32.c
+│   │   │       │   ├── arm_fir_lattice_init_q15.c
+│   │   │       │   ├── arm_fir_lattice_init_q31.c
+│   │   │       │   ├── arm_fir_lattice_q15.c
+│   │   │       │   ├── arm_fir_lattice_q31.c
+│   │   │       │   ├── arm_fir_q15.c
+│   │   │       │   ├── arm_fir_q31.c
+│   │   │       │   ├── arm_fir_q7.c
+│   │   │       │   ├── arm_fir_sparse_f32.c
+│   │   │       │   ├── arm_fir_sparse_init_f32.c
+│   │   │       │   ├── arm_fir_sparse_init_q15.c
+│   │   │       │   ├── arm_fir_sparse_init_q31.c
+│   │   │       │   ├── arm_fir_sparse_init_q7.c
+│   │   │       │   ├── arm_fir_sparse_q15.c
+│   │   │       │   ├── arm_fir_sparse_q31.c
+│   │   │       │   ├── arm_fir_sparse_q7.c
+│   │   │       │   ├── arm_iir_lattice_f32.c
+│   │   │       │   ├── arm_iir_lattice_init_f32.c
+│   │   │       │   ├── arm_iir_lattice_init_q15.c
+│   │   │       │   ├── arm_iir_lattice_init_q31.c
+│   │   │       │   ├── arm_iir_lattice_q15.c
+│   │   │       │   ├── arm_iir_lattice_q31.c
+│   │   │       │   ├── arm_levinson_durbin_f16.c
+│   │   │       │   ├── arm_levinson_durbin_f32.c
+│   │   │       │   ├── arm_levinson_durbin_q31.c
+│   │   │       │   ├── arm_lms_f32.c
+│   │   │       │   ├── arm_lms_init_f32.c
+│   │   │       │   ├── arm_lms_init_q15.c
+│   │   │       │   ├── arm_lms_init_q31.c
+│   │   │       │   ├── arm_lms_norm_f32.c
+│   │   │       │   ├── arm_lms_norm_init_f32.c
+│   │   │       │   ├── arm_lms_norm_init_q15.c
+│   │   │       │   ├── arm_lms_norm_init_q31.c
+│   │   │       │   ├── arm_lms_norm_q15.c
+│   │   │       │   ├── arm_lms_norm_q31.c
+│   │   │       │   ├── arm_lms_q15.c
+│   │   │       │   └── arm_lms_q31.c
+│   │   │       ├── InterpolationFunctions
+│   │   │       │   ├── arm_bilinear_interp_f16.c
+│   │   │       │   ├── arm_bilinear_interp_f32.c
+│   │   │       │   ├── arm_bilinear_interp_q15.c
+│   │   │       │   ├── arm_bilinear_interp_q31.c
+│   │   │       │   ├── arm_bilinear_interp_q7.c
+│   │   │       │   ├── arm_linear_interp_f16.c
+│   │   │       │   ├── arm_linear_interp_f32.c
+│   │   │       │   ├── arm_linear_interp_q15.c
+│   │   │       │   ├── arm_linear_interp_q31.c
+│   │   │       │   ├── arm_linear_interp_q7.c
+│   │   │       │   ├── arm_spline_interp_f32.c
+│   │   │       │   └── arm_spline_interp_init_f32.c
+│   │   │       ├── MatrixFunctions
+│   │   │       │   ├── arm_householder_f16.c
+│   │   │       │   ├── arm_householder_f32.c
+│   │   │       │   ├── arm_householder_f64.c
+│   │   │       │   ├── arm_mat_add_f16.c
+│   │   │       │   ├── arm_mat_add_f32.c
+│   │   │       │   ├── arm_mat_add_q15.c
+│   │   │       │   ├── arm_mat_add_q31.c
+│   │   │       │   ├── arm_mat_cholesky_f16.c
+│   │   │       │   ├── arm_mat_cholesky_f32.c
+│   │   │       │   ├── arm_mat_cholesky_f64.c
+│   │   │       │   ├── arm_mat_cmplx_mult_f16.c
+│   │   │       │   ├── arm_mat_cmplx_mult_f32.c
+│   │   │       │   ├── arm_mat_cmplx_mult_q15.c
+│   │   │       │   ├── arm_mat_cmplx_mult_q31.c
+│   │   │       │   ├── arm_mat_cmplx_trans_f16.c
+│   │   │       │   ├── arm_mat_cmplx_trans_f32.c
+│   │   │       │   ├── arm_mat_cmplx_trans_q15.c
+│   │   │       │   ├── arm_mat_cmplx_trans_q31.c
+│   │   │       │   ├── arm_mat_init_f16.c
+│   │   │       │   ├── arm_mat_init_f32.c
+│   │   │       │   ├── arm_mat_init_q15.c
+│   │   │       │   ├── arm_mat_init_q31.c
+│   │   │       │   ├── arm_mat_inverse_f16.c
+│   │   │       │   ├── arm_mat_inverse_f32.c
+│   │   │       │   ├── arm_mat_inverse_f64.c
+│   │   │       │   ├── arm_mat_ldlt_f32.c
+│   │   │       │   ├── arm_mat_ldlt_f64.c
+│   │   │       │   ├── arm_mat_mult_f16.c
+│   │   │       │   ├── arm_mat_mult_f32.c
+│   │   │       │   ├── arm_mat_mult_f64.c
+│   │   │       │   ├── arm_mat_mult_fast_q15.c
+│   │   │       │   ├── arm_mat_mult_fast_q31.c
+│   │   │       │   ├── arm_mat_mult_opt_q31.c
+│   │   │       │   ├── arm_mat_mult_q15.c
+│   │   │       │   ├── arm_mat_mult_q31.c
+│   │   │       │   ├── arm_mat_mult_q7.c
+│   │   │       │   ├── arm_mat_qr_f16.c
+│   │   │       │   ├── arm_mat_qr_f32.c
+│   │   │       │   ├── arm_mat_qr_f64.c
+│   │   │       │   ├── arm_mat_scale_f16.c
+│   │   │       │   ├── arm_mat_scale_f32.c
+│   │   │       │   ├── arm_mat_scale_q15.c
+│   │   │       │   ├── arm_mat_scale_q31.c
+│   │   │       │   ├── arm_mat_solve_lower_triangular_f16.c
+│   │   │       │   ├── arm_mat_solve_lower_triangular_f32.c
+│   │   │       │   ├── arm_mat_solve_lower_triangular_f64.c
+│   │   │       │   ├── arm_mat_solve_upper_triangular_f16.c
+│   │   │       │   ├── arm_mat_solve_upper_triangular_f32.c
+│   │   │       │   ├── arm_mat_solve_upper_triangular_f64.c
+│   │   │       │   ├── arm_mat_sub_f16.c
+│   │   │       │   ├── arm_mat_sub_f32.c
+│   │   │       │   ├── arm_mat_sub_f64.c
+│   │   │       │   ├── arm_mat_sub_q15.c
+│   │   │       │   ├── arm_mat_sub_q31.c
+│   │   │       │   ├── arm_mat_trans_f16.c
+│   │   │       │   ├── arm_mat_trans_f32.c
+│   │   │       │   ├── arm_mat_trans_f64.c
+│   │   │       │   ├── arm_mat_trans_q15.c
+│   │   │       │   ├── arm_mat_trans_q31.c
+│   │   │       │   ├── arm_mat_trans_q7.c
+│   │   │       │   ├── arm_mat_vec_mult_f16.c
+│   │   │       │   ├── arm_mat_vec_mult_f32.c
+│   │   │       │   ├── arm_mat_vec_mult_q15.c
+│   │   │       │   ├── arm_mat_vec_mult_q31.c
+│   │   │       │   └── arm_mat_vec_mult_q7.c
+│   │   │       ├── QuaternionMathFunctions
+│   │   │       │   ├── arm_quaternion_conjugate_f32.c
+│   │   │       │   ├── arm_quaternion_inverse_f32.c
+│   │   │       │   ├── arm_quaternion_norm_f32.c
+│   │   │       │   ├── arm_quaternion_normalize_f32.c
+│   │   │       │   ├── arm_quaternion_product_f32.c
+│   │   │       │   ├── arm_quaternion_product_single_f32.c
+│   │   │       │   ├── arm_quaternion2rotation_f32.c
+│   │   │       │   └── arm_rotation2quaternion_f32.c
+│   │   │       ├── StatisticsFunctions
+│   │   │       │   ├── arm_absmax_f16.c
+│   │   │       │   ├── arm_absmax_f32.c
+│   │   │       │   ├── arm_absmax_f64.c
+│   │   │       │   ├── arm_absmax_no_idx_f16.c
+│   │   │       │   ├── arm_absmax_no_idx_f32.c
+│   │   │       │   ├── arm_absmax_no_idx_f64.c
+│   │   │       │   ├── arm_absmax_no_idx_q15.c
+│   │   │       │   ├── arm_absmax_no_idx_q31.c
+│   │   │       │   ├── arm_absmax_no_idx_q7.c
+│   │   │       │   ├── arm_absmax_q15.c
+│   │   │       │   ├── arm_absmax_q31.c
+│   │   │       │   ├── arm_absmax_q7.c
+│   │   │       │   ├── arm_absmin_f16.c
+│   │   │       │   ├── arm_absmin_f32.c
+│   │   │       │   ├── arm_absmin_f64.c
+│   │   │       │   ├── arm_absmin_no_idx_f16.c
+│   │   │       │   ├── arm_absmin_no_idx_f32.c
+│   │   │       │   ├── arm_absmin_no_idx_f64.c
+│   │   │       │   ├── arm_absmin_no_idx_q15.c
+│   │   │       │   ├── arm_absmin_no_idx_q31.c
+│   │   │       │   ├── arm_absmin_no_idx_q7.c
+│   │   │       │   ├── arm_absmin_q15.c
+│   │   │       │   ├── arm_absmin_q31.c
+│   │   │       │   ├── arm_absmin_q7.c
+│   │   │       │   ├── arm_accumulate_f16.c
+│   │   │       │   ├── arm_accumulate_f32.c
+│   │   │       │   ├── arm_accumulate_f64.c
+│   │   │       │   ├── arm_entropy_f16.c
+│   │   │       │   ├── arm_entropy_f32.c
+│   │   │       │   ├── arm_entropy_f64.c
+│   │   │       │   ├── arm_kullback_leibler_f16.c
+│   │   │       │   ├── arm_kullback_leibler_f32.c
+│   │   │       │   ├── arm_kullback_leibler_f64.c
+│   │   │       │   ├── arm_logsumexp_dot_prod_f16.c
+│   │   │       │   ├── arm_logsumexp_dot_prod_f32.c
+│   │   │       │   ├── arm_logsumexp_f16.c
+│   │   │       │   ├── arm_logsumexp_f32.c
+│   │   │       │   ├── arm_max_f16.c
+│   │   │       │   ├── arm_max_f32.c
+│   │   │       │   ├── arm_max_f64.c
+│   │   │       │   ├── arm_max_no_idx_f16.c
+│   │   │       │   ├── arm_max_no_idx_f32.c
+│   │   │       │   ├── arm_max_no_idx_f64.c
+│   │   │       │   ├── arm_max_no_idx_q15.c
+│   │   │       │   ├── arm_max_no_idx_q31.c
+│   │   │       │   ├── arm_max_no_idx_q7.c
+│   │   │       │   ├── arm_max_q15.c
+│   │   │       │   ├── arm_max_q31.c
+│   │   │       │   ├── arm_max_q7.c
+│   │   │       │   ├── arm_mean_f16.c
+│   │   │       │   ├── arm_mean_f32.c
+│   │   │       │   ├── arm_mean_f64.c
+│   │   │       │   ├── arm_mean_q15.c
+│   │   │       │   ├── arm_mean_q31.c
+│   │   │       │   ├── arm_mean_q7.c
+│   │   │       │   ├── arm_min_f16.c
+│   │   │       │   ├── arm_min_f32.c
+│   │   │       │   ├── arm_min_f64.c
+│   │   │       │   ├── arm_min_no_idx_f16.c
+│   │   │       │   ├── arm_min_no_idx_f32.c
+│   │   │       │   ├── arm_min_no_idx_f64.c
+│   │   │       │   ├── arm_min_no_idx_q15.c
+│   │   │       │   ├── arm_min_no_idx_q31.c
+│   │   │       │   ├── arm_min_no_idx_q7.c
+│   │   │       │   ├── arm_min_q15.c
+│   │   │       │   ├── arm_min_q31.c
+│   │   │       │   ├── arm_min_q7.c
+│   │   │       │   ├── arm_mse_f16.c
+│   │   │       │   ├── arm_mse_f32.c
+│   │   │       │   ├── arm_mse_f64.c
+│   │   │       │   ├── arm_mse_q15.c
+│   │   │       │   ├── arm_mse_q31.c
+│   │   │       │   ├── arm_mse_q7.c
+│   │   │       │   ├── arm_power_f16.c
+│   │   │       │   ├── arm_power_f32.c
+│   │   │       │   ├── arm_power_f64.c
+│   │   │       │   ├── arm_power_q15.c
+│   │   │       │   ├── arm_power_q31.c
+│   │   │       │   ├── arm_power_q7.c
+│   │   │       │   ├── arm_rms_f16.c
+│   │   │       │   ├── arm_rms_f32.c
+│   │   │       │   ├── arm_rms_q15.c
+│   │   │       │   ├── arm_rms_q31.c
+│   │   │       │   ├── arm_std_f16.c
+│   │   │       │   ├── arm_std_f32.c
+│   │   │       │   ├── arm_std_f64.c
+│   │   │       │   ├── arm_std_q15.c
+│   │   │       │   ├── arm_std_q31.c
+│   │   │       │   ├── arm_var_f16.c
+│   │   │       │   ├── arm_var_f32.c
+│   │   │       │   ├── arm_var_f64.c
+│   │   │       │   ├── arm_var_q15.c
+│   │   │       │   └── arm_var_q31.c
+│   │   │       ├── SupportFunctions
+│   │   │       │   ├── arm_barycenter_f16.c
+│   │   │       │   ├── arm_barycenter_f32.c
+│   │   │       │   ├── arm_bitonic_sort_f32.c
+│   │   │       │   ├── arm_bubble_sort_f32.c
+│   │   │       │   ├── arm_copy_f16.c
+│   │   │       │   ├── arm_copy_f32.c
+│   │   │       │   ├── arm_copy_f64.c
+│   │   │       │   ├── arm_copy_q15.c
+│   │   │       │   ├── arm_copy_q31.c
+│   │   │       │   ├── arm_copy_q7.c
+│   │   │       │   ├── arm_f16_to_float.c
+│   │   │       │   ├── arm_f16_to_q15.c
+│   │   │       │   ├── arm_fill_f16.c
+│   │   │       │   ├── arm_fill_f32.c
+│   │   │       │   ├── arm_fill_f64.c
+│   │   │       │   ├── arm_fill_q15.c
+│   │   │       │   ├── arm_fill_q31.c
+│   │   │       │   ├── arm_fill_q7.c
+│   │   │       │   ├── arm_float_to_f16.c
+│   │   │       │   ├── arm_float_to_q15.c
+│   │   │       │   ├── arm_float_to_q31.c
+│   │   │       │   ├── arm_float_to_q7.c
+│   │   │       │   ├── arm_heap_sort_f32.c
+│   │   │       │   ├── arm_insertion_sort_f32.c
+│   │   │       │   ├── arm_merge_sort_f32.c
+│   │   │       │   ├── arm_merge_sort_init_f32.c
+│   │   │       │   ├── arm_q15_to_f16.c
+│   │   │       │   ├── arm_q15_to_float.c
+│   │   │       │   ├── arm_q15_to_q31.c
+│   │   │       │   ├── arm_q15_to_q7.c
+│   │   │       │   ├── arm_q31_to_float.c
+│   │   │       │   ├── arm_q31_to_q15.c
+│   │   │       │   ├── arm_q31_to_q7.c
+│   │   │       │   ├── arm_q7_to_float.c
+│   │   │       │   ├── arm_q7_to_q15.c
+│   │   │       │   ├── arm_q7_to_q31.c
+│   │   │       │   ├── arm_quick_sort_f32.c
+│   │   │       │   ├── arm_selection_sort_f32.c
+│   │   │       │   ├── arm_sort_f32.c
+│   │   │       │   ├── arm_sort_init_f32.c
+│   │   │       │   ├── arm_weighted_sum_f16.c
+│   │   │       │   └── arm_weighted_sum_f32.c
+│   │   │       ├── SVMFunctions
+│   │   │       │   ├── arm_svm_linear_init_f16.c
+│   │   │       │   ├── arm_svm_linear_init_f32.c
+│   │   │       │   ├── arm_svm_linear_predict_f16.c
+│   │   │       │   ├── arm_svm_linear_predict_f32.c
+│   │   │       │   ├── arm_svm_polynomial_init_f16.c
+│   │   │       │   ├── arm_svm_polynomial_init_f32.c
+│   │   │       │   ├── arm_svm_polynomial_predict_f16.c
+│   │   │       │   ├── arm_svm_polynomial_predict_f32.c
+│   │   │       │   ├── arm_svm_rbf_init_f16.c
+│   │   │       │   ├── arm_svm_rbf_init_f32.c
+│   │   │       │   ├── arm_svm_rbf_predict_f16.c
+│   │   │       │   ├── arm_svm_rbf_predict_f32.c
+│   │   │       │   ├── arm_svm_sigmoid_init_f16.c
+│   │   │       │   ├── arm_svm_sigmoid_init_f32.c
+│   │   │       │   ├── arm_svm_sigmoid_predict_f16.c
+│   │   │       │   └── arm_svm_sigmoid_predict_f32.c
+│   │   │       └── TransformFunctions
+│   │   │           ├── arm_bitreversal_f16.c
+│   │   │           ├── arm_bitreversal.c
+│   │   │           ├── arm_bitreversal2.c
+│   │   │           ├── arm_cfft_f16.c
+│   │   │           ├── arm_cfft_f32.c
+│   │   │           ├── arm_cfft_f64.c
+│   │   │           ├── arm_cfft_init_f16.c
+│   │   │           ├── arm_cfft_init_f32.c
+│   │   │           ├── arm_cfft_init_f64.c
+│   │   │           ├── arm_cfft_init_q15.c
+│   │   │           ├── arm_cfft_init_q31.c
+│   │   │           ├── arm_cfft_q15.c
+│   │   │           ├── arm_cfft_q31.c
+│   │   │           ├── arm_cfft_radix2_f16.c
+│   │   │           ├── arm_cfft_radix2_f32.c
+│   │   │           ├── arm_cfft_radix2_init_f16.c
+│   │   │           ├── arm_cfft_radix2_init_f32.c
+│   │   │           ├── arm_cfft_radix2_init_q15.c
+│   │   │           ├── arm_cfft_radix2_init_q31.c
+│   │   │           ├── arm_cfft_radix2_q15.c
+│   │   │           ├── arm_cfft_radix2_q31.c
+│   │   │           ├── arm_cfft_radix4_f16.c
+│   │   │           ├── arm_cfft_radix4_f32.c
+│   │   │           ├── arm_cfft_radix4_init_f16.c
+│   │   │           ├── arm_cfft_radix4_init_f32.c
+│   │   │           ├── arm_cfft_radix4_init_q15.c
+│   │   │           ├── arm_cfft_radix4_init_q31.c
+│   │   │           ├── arm_cfft_radix4_q15.c
+│   │   │           ├── arm_cfft_radix4_q31.c
+│   │   │           ├── arm_cfft_radix8_f16.c
+│   │   │           ├── arm_cfft_radix8_f32.c
+│   │   │           ├── arm_dct4_f32.c
+│   │   │           ├── arm_dct4_init_f32.c
+│   │   │           ├── arm_dct4_init_q15.c
+│   │   │           ├── arm_dct4_init_q31.c
+│   │   │           ├── arm_dct4_q15.c
+│   │   │           ├── arm_dct4_q31.c
+│   │   │           ├── arm_mfcc_f16.c
+│   │   │           ├── arm_mfcc_f32.c
+│   │   │           ├── arm_mfcc_init_f16.c
+│   │   │           ├── arm_mfcc_init_f32.c
+│   │   │           ├── arm_mfcc_init_q15.c
+│   │   │           ├── arm_mfcc_init_q31.c
+│   │   │           ├── arm_mfcc_q15.c
+│   │   │           ├── arm_mfcc_q31.c
+│   │   │           ├── arm_rfft_f32.c
+│   │   │           ├── arm_rfft_fast_f16.c
+│   │   │           ├── arm_rfft_fast_f32.c
+│   │   │           ├── arm_rfft_fast_f64.c
+│   │   │           ├── arm_rfft_fast_init_f16.c
+│   │   │           ├── arm_rfft_fast_init_f32.c
+│   │   │           ├── arm_rfft_fast_init_f64.c
+│   │   │           ├── arm_rfft_init_f32.c
+│   │   │           ├── arm_rfft_init_q15.c
+│   │   │           ├── arm_rfft_init_q31.c
+│   │   │           ├── arm_rfft_q15.c
+│   │   │           └── arm_rfft_q31.c
+│   │   ├── NN
+│   │   │   ├── Include
+│   │   │   │   ├── arm_nn_math_types.h
+│   │   │   │   ├── arm_nn_tables.h
+│   │   │   │   ├── arm_nn_types.h
+│   │   │   │   ├── arm_nnfunctions.h
+│   │   │   │   └── arm_nnsupportfunctions.h
+│   │   │   └── Source
+│   │   │       ├── ActivationFunctions
+│   │   │       │   ├── arm_nn_activations_q15.c
+│   │   │       │   ├── arm_nn_activations_q7.c
+│   │   │       │   ├── arm_relu_q15.c
+│   │   │       │   ├── arm_relu_q7.c
+│   │   │       │   └── arm_relu6_s8.c
+│   │   │       ├── BasicMathFunctions
+│   │   │       │   ├── arm_elementwise_add_s16.c
+│   │   │       │   ├── arm_elementwise_add_s8.c
+│   │   │       │   ├── arm_elementwise_mul_s16.c
+│   │   │       │   └── arm_elementwise_mul_s8.c
+│   │   │       ├── ConcatenationFunctions
+│   │   │       │   ├── arm_concatenation_s8_w.c
+│   │   │       │   ├── arm_concatenation_s8_x.c
+│   │   │       │   ├── arm_concatenation_s8_y.c
+│   │   │       │   └── arm_concatenation_s8_z.c
+│   │   │       ├── ConvolutionFunctions
+│   │   │       │   ├── arm_convolve_1_x_n_s8.c
+│   │   │       │   ├── arm_convolve_1x1_HWC_q7_fast_nonsquare.c
+│   │   │       │   ├── arm_convolve_1x1_s8_fast.c
+│   │   │       │   ├── arm_convolve_fast_s16.c
+│   │   │       │   ├── arm_convolve_HWC_q15_basic.c
+│   │   │       │   ├── arm_convolve_HWC_q15_fast_nonsquare.c
+│   │   │       │   ├── arm_convolve_HWC_q15_fast.c
+│   │   │       │   ├── arm_convolve_HWC_q7_basic_nonsquare.c
+│   │   │       │   ├── arm_convolve_HWC_q7_basic.c
+│   │   │       │   ├── arm_convolve_HWC_q7_fast_nonsquare.c
+│   │   │       │   ├── arm_convolve_HWC_q7_fast.c
+│   │   │       │   ├── arm_convolve_HWC_q7_RGB.c
+│   │   │       │   ├── arm_convolve_s16.c
+│   │   │       │   ├── arm_convolve_s8.c
+│   │   │       │   ├── arm_convolve_wrapper_s16.c
+│   │   │       │   ├── arm_convolve_wrapper_s8.c
+│   │   │       │   ├── arm_depthwise_conv_3x3_s8.c
+│   │   │       │   ├── arm_depthwise_conv_fast_s16.c
+│   │   │       │   ├── arm_depthwise_conv_s16.c
+│   │   │       │   ├── arm_depthwise_conv_s8_opt.c
+│   │   │       │   ├── arm_depthwise_conv_s8.c
+│   │   │       │   ├── arm_depthwise_conv_u8_basic_ver1.c
+│   │   │       │   ├── arm_depthwise_conv_wrapper_s16.c
+│   │   │       │   ├── arm_depthwise_conv_wrapper_s8.c
+│   │   │       │   ├── arm_depthwise_separable_conv_HWC_q7_nonsquare.c
+│   │   │       │   ├── arm_depthwise_separable_conv_HWC_q7.c
+│   │   │       │   ├── arm_nn_depthwise_conv_s8_core.c
+│   │   │       │   ├── arm_nn_mat_mult_kernel_q7_q15_reordered.c
+│   │   │       │   ├── arm_nn_mat_mult_kernel_q7_q15.c
+│   │   │       │   ├── arm_nn_mat_mult_kernel_s8_s16.c
+│   │   │       │   └── arm_nn_mat_mult_s8.c
+│   │   │       ├── FullyConnectedFunctions
+│   │   │       │   ├── arm_fully_connected_mat_q7_vec_q15_opt.c
+│   │   │       │   ├── arm_fully_connected_mat_q7_vec_q15.c
+│   │   │       │   ├── arm_fully_connected_q15_opt.c
+│   │   │       │   ├── arm_fully_connected_q15.c
+│   │   │       │   ├── arm_fully_connected_q7_opt.c
+│   │   │       │   ├── arm_fully_connected_q7.c
+│   │   │       │   ├── arm_fully_connected_s16.c
+│   │   │       │   └── arm_fully_connected_s8.c
+│   │   │       ├── NNSupportFunctions
+│   │   │       │   ├── arm_nn_accumulate_q7_to_q15.c
+│   │   │       │   ├── arm_nn_add_q7.c
+│   │   │       │   ├── arm_nn_depthwise_conv_nt_t_padded_s8.c
+│   │   │       │   ├── arm_nn_depthwise_conv_nt_t_s16.c
+│   │   │       │   ├── arm_nn_depthwise_conv_nt_t_s8.c
+│   │   │       │   ├── arm_nn_mat_mul_core_1x_s8.c
+│   │   │       │   ├── arm_nn_mat_mul_core_4x_s8.c
+│   │   │       │   ├── arm_nn_mat_mul_kernel_s16.c
+│   │   │       │   ├── arm_nn_mat_mult_nt_t_s8.c
+│   │   │       │   ├── arm_nn_mult_q15.c
+│   │   │       │   ├── arm_nn_mult_q7.c
+│   │   │       │   ├── arm_nn_vec_mat_mult_t_s16.c
+│   │   │       │   ├── arm_nn_vec_mat_mult_t_s8.c
+│   │   │       │   ├── arm_nn_vec_mat_mult_t_svdf_s8.c
+│   │   │       │   ├── arm_nntables.c
+│   │   │       │   ├── arm_q7_to_q15_no_shift.c
+│   │   │       │   ├── arm_q7_to_q15_reordered_no_shift.c
+│   │   │       │   ├── arm_q7_to_q15_reordered_with_offset.c
+│   │   │       │   └── arm_q7_to_q15_with_offset.c
+│   │   │       ├── PoolingFunctions
+│   │   │       │   ├── arm_avgpool_s16.c
+│   │   │       │   ├── arm_avgpool_s8.c
+│   │   │       │   ├── arm_max_pool_s16.c
+│   │   │       │   ├── arm_max_pool_s8.c
+│   │   │       │   └── arm_pool_q7_HWC.c
+│   │   │       ├── ReshapeFunctions
+│   │   │       │   └── arm_reshape_s8.c
+│   │   │       ├── SoftmaxFunctions
+│   │   │       │   ├── arm_nn_softmax_common_s8.c
+│   │   │       │   ├── arm_softmax_q15.c
+│   │   │       │   ├── arm_softmax_q7.c
+│   │   │       │   ├── arm_softmax_s16.c
+│   │   │       │   ├── arm_softmax_s8_s16.c
+│   │   │       │   ├── arm_softmax_s8.c
+│   │   │       │   ├── arm_softmax_u8.c
+│   │   │       │   └── arm_softmax_with_batch_q7.c
+│   │   │       └── SVDFunctions
+│   │   │           ├── arm_svdf_s8.c
+│   │   │           └── arm_svdf_state_s16_s8.c
+│   │   └── sources.txt
+│   ├── dsp
+│   │   ├── config.hpp
+│   │   ├── dct
+│   │   │   ├── .clang-format
+│   │   │   ├── fast-dct-fft.cpp
+│   │   │   └── fast-dct-fft.h
+│   │   ├── dsp_engines
+│   │   │   ├── ei_arm_cmsis_dsp.h
+│   │   │   ├── ei_ceva_dsp_fixed.h
+│   │   │   ├── ei_ceva_dsp.h
+│   │   │   ├── ei_cmsis_numpy.hpp
+│   │   │   ├── ei_esp_dsp.h
+│   │   │   └── ei_no_hw_dsp.h
+│   │   ├── ei_alloc.h
+│   │   ├── ei_dsp_handle.h
+│   │   ├── ei_eeg.hpp
+│   │   ├── ei_flatten.h
+│   │   ├── ei_hr.hpp
+│   │   ├── ei_profiler.h
+│   │   ├── ei_utils.h
+│   │   ├── ei_vector.h
+│   │   ├── image
+│   │   │   ├── image.hpp
+│   │   │   ├── processing.cpp
+│   │   │   └── processing.hpp
+│   │   ├── kissfft
+│   │   │   ├── _kiss_fft_guts.h
+│   │   │   ├── .clang-format
+│   │   │   ├── kiss_fft.cpp
+│   │   │   ├── kiss_fft.h
+│   │   │   ├── kiss_fftr.cpp
+│   │   │   ├── kiss_fftr.h
+│   │   │   ├── kissfft.h
+│   │   │   ├── LICENSE
+│   │   │   └── README.md
+│   │   ├── memory.cpp
+│   │   ├── memory.hpp
+│   │   ├── numpy_types.h
+│   │   ├── numpy.hpp
+│   │   ├── README.md
+│   │   ├── returntypes.h
+│   │   ├── returntypes.hpp
+│   │   ├── spectral
+│   │   │   ├── feature.hpp
+│   │   │   ├── filters.hpp
+│   │   │   ├── fir_filter.hpp
+│   │   │   ├── processing.hpp
+│   │   │   ├── signal.hpp
+│   │   │   ├── spectral.hpp
+│   │   │   ├── wavelet_coeff.hpp
+│   │   │   └── wavelet.hpp
+│   │   └── speechpy
+│   │       ├── feature.hpp
+│   │       ├── functions.hpp
+│   │       ├── processing.hpp
+│   │       └── speechpy.hpp
+│   ├── LICENSE
+│   ├── LICENSE.3-clause-bsd-clear
+│   ├── porting
+│   │   ├── .clang-format
+│   │   ├── ambiq
+│   │   │   ├── debug_log.cpp
+│   │   │   └── ei_classifier_porting.cpp
+│   │   ├── android
+│   │   │   └── ei_classifier_porting.cpp
+│   │   ├── arduino
+│   │   │   ├── debug_log.cpp
+│   │   │   └── ei_classifier_porting.cpp
+│   │   ├── brickml
+│   │   │   ├── debug_log.cpp
+│   │   │   └── ei_classifier_porting.cpp
+│   │   ├── ceva-npn
+│   │   │   ├── debug_log.cpp
+│   │   │   └── ei_classifier_porting.cpp
+│   │   ├── clib
+│   │   │   ├── debug_log.cpp
+│   │   │   └── ei_classifier_porting.cpp
+│   │   ├── ei_classifier_porting.h
+│   │   ├── ei_logging.h
+│   │   ├── espressif
+│   │   │   ├── debug_log.cpp
+│   │   │   ├── ei_classifier_porting.cpp
+│   │   │   ├── esp-dsp
+│   │   │   │   ├── LICENSE
+│   │   │   │   ├── modules
+│   │   │   │   │   ├── common
+│   │   │   │   │   │   ├── include
+│   │   │   │   │   │   │   ├── dsp_common.h
+│   │   │   │   │   │   │   ├── dsp_err_codes.h
+│   │   │   │   │   │   │   ├── dsp_err.h
+│   │   │   │   │   │   │   ├── dsp_platform.h
+│   │   │   │   │   │   │   ├── dsp_tests.h
+│   │   │   │   │   │   │   └── dsp_types.h
+│   │   │   │   │   │   └── misc
+│   │   │   │   │   │       └── dsps_pwroftwo.cpp
+│   │   │   │   │   └── fft
+│   │   │   │   │       ├── fixed
+│   │   │   │   │       │   ├── dsps_fft2r_sc16_ae32.S
+│   │   │   │   │       │   ├── dsps_fft2r_sc16_aes3.S
+│   │   │   │   │       │   ├── dsps_fft2r_sc16_ansi.c
+│   │   │   │   │       │   └── dsps_fft2r_sc16_arp4.S
+│   │   │   │   │       ├── float
+│   │   │   │   │       │   ├── dsps_bit_rev_lookup_fc32_aes3.S
+│   │   │   │   │       │   ├── dsps_fft2r_bitrev_tables_fc32.c
+│   │   │   │   │       │   ├── dsps_fft2r_fc32_ae32_.S
+│   │   │   │   │       │   ├── dsps_fft2r_fc32_ae32.c
+│   │   │   │   │       │   ├── dsps_fft2r_fc32_aes3_.S
+│   │   │   │   │       │   ├── dsps_fft2r_fc32_ansi.c
+│   │   │   │   │       │   └── dsps_fft2r_fc32_arp4.S
+│   │   │   │   │       └── include
+│   │   │   │   │           ├── dsps_fft_tables.h
+│   │   │   │   │           ├── dsps_fft2r_platform.h
+│   │   │   │   │           └── dsps_fft2r.h
+│   │   │   │   └── README.md
+│   │   │   └── ESP-NN
+│   │   │       ├── CMakeLists.txt
+│   │   │       ├── CONTRIBUTING.md
+│   │   │       ├── idf_component.yml
+│   │   │       ├── include
+│   │   │       │   ├── esp_nn_ansi_c.h
+│   │   │       │   ├── esp_nn_ansi_headers.h
+│   │   │       │   ├── esp_nn_defs.h
+│   │   │       │   ├── esp_nn_esp32p4.h
+│   │   │       │   ├── esp_nn_esp32s3.h
+│   │   │       │   ├── esp_nn_generic_opt.h
+│   │   │       │   └── esp_nn.h
+│   │   │       ├── Kconfig.projbuild
+│   │   │       ├── LICENSE
+│   │   │       ├── README.md
+│   │   │       └── src
+│   │   │           ├── activation_functions
+│   │   │           │   ├── esp_nn_relu_ansi.c
+│   │   │           │   └── esp_nn_relu_s8_esp32s3.S
+│   │   │           ├── basic_math
+│   │   │           │   ├── esp_nn_add_ansi.c
+│   │   │           │   ├── esp_nn_add_s8_esp32s3.S
+│   │   │           │   ├── esp_nn_mul_ansi.c
+│   │   │           │   └── esp_nn_mul_s8_esp32s3.S
+│   │   │           ├── common
+│   │   │           │   ├── common_functions.h
+│   │   │           │   ├── esp_nn_common_functions_esp32s3.S
+│   │   │           │   ├── esp_nn_multiply_by_quantized_mult_esp32s3.S
+│   │   │           │   └── esp_nn_multiply_by_quantized_mult_ver1_esp32s3.S
+│   │   │           ├── convolution
+│   │   │           │   ├── esp_nn_conv_ansi.c
+│   │   │           │   ├── esp_nn_conv_esp32p4.c
+│   │   │           │   ├── esp_nn_conv_esp32s3.c
+│   │   │           │   ├── esp_nn_conv_opt.c
+│   │   │           │   ├── esp_nn_conv_s16_mult4_1x1_esp32s3.S
+│   │   │           │   ├── esp_nn_conv_s16_mult8_esp32s3.S
+│   │   │           │   ├── esp_nn_conv_s8_filter_aligned_input_padded_esp32s3.S
+│   │   │           │   ├── esp_nn_conv_s8_mult8_1x1_esp32s3.S
+│   │   │           │   ├── esp_nn_depthwise_conv_ansi.c
+│   │   │           │   ├── esp_nn_depthwise_conv_opt.c
+│   │   │           │   ├── esp_nn_depthwise_conv_s16_mult1_3x3_esp32s3.S
+│   │   │           │   ├── esp_nn_depthwise_conv_s16_mult1_3x3_no_pad_esp32s3.S
+│   │   │           │   ├── esp_nn_depthwise_conv_s16_mult1_esp32s3.S
+│   │   │           │   ├── esp_nn_depthwise_conv_s16_mult4_esp32s3.S
+│   │   │           │   ├── esp_nn_depthwise_conv_s16_mult8_3x3_esp32s3.S
+│   │   │           │   ├── esp_nn_depthwise_conv_s16_mult8_esp32s3.S
+│   │   │           │   ├── esp_nn_depthwise_conv_s8_esp32s3.c
+│   │   │           │   └── esp_nn_depthwise_conv_s8_mult1_3x3_padded_esp32s3.S
+│   │   │           ├── fully_connected
+│   │   │           │   ├── esp_nn_fully_connected_ansi.c
+│   │   │           │   └── esp_nn_fully_connected_s8_esp32s3.S
+│   │   │           ├── pooling
+│   │   │           │   ├── esp_nn_avg_pool_ansi.c
+│   │   │           │   ├── esp_nn_avg_pool_s8_esp32s3.S
+│   │   │           │   ├── esp_nn_max_pool_ansi.c
+│   │   │           │   └── esp_nn_max_pool_s8_esp32s3.S
+│   │   │           └── softmax
+│   │   │               ├── esp_nn_softmax_ansi.c
+│   │   │               ├── esp_nn_softmax_opt.c
+│   │   │               └── softmax_common.h
+│   │   ├── ethos-core-driver
+│   │   │   ├── CMakeLists.txt
+│   │   │   ├── include
+│   │   │   │   ├── ethosu_driver.h
+│   │   │   │   ├── ethosu_types.h
+│   │   │   │   └── pmu_ethosu.h
+│   │   │   ├── LICENSE.txt
+│   │   │   ├── README.MD
+│   │   │   ├── SECURITY.md
+│   │   │   ├── src
+│   │   │   │   ├── ehtosu_config_u65.h
+│   │   │   │   ├── ethosu_config_u55.h
+│   │   │   │   ├── ethosu_config_u85.h
+│   │   │   │   ├── ethosu_device_u55_u65.c
+│   │   │   │   ├── ethosu_device_u85.c
+│   │   │   │   ├── ethosu_device.h
+│   │   │   │   ├── ethosu_driver.c
+│   │   │   │   ├── ethosu_interface.h
+│   │   │   │   ├── ethosu_log.h
+│   │   │   │   ├── ethosu_pmu.c
+│   │   │   │   ├── ethosu55_interface.h
+│   │   │   │   ├── ethosu65_interface.h
+│   │   │   │   └── ethosu85_interface.h
+│   │   │   └── version.txt
+│   │   ├── himax
+│   │   │   ├── debug_log.cpp
+│   │   │   └── ei_classifier_porting.cpp
+│   │   ├── himax-we2
+│   │   │   ├── debug_log.cpp
+│   │   │   ├── ei_classifier_porting.cpp
+│   │   │   └── ethosu_driver.c
+│   │   ├── iar
+│   │   │   ├── debug_log.cpp
+│   │   │   └── ei_classifier_porting.cpp
+│   │   ├── infineon-psoc62
+│   │   │   ├── debug_log.cpp
+│   │   │   └── ei_classifier_porting.cpp
+│   │   ├── mbed
+│   │   │   ├── debug_log.cpp
+│   │   │   └── ei_classifier_porting.cpp
+│   │   ├── mingw32
+│   │   │   ├── debug_log.cpp
+│   │   │   └── ei_classifier_porting.cpp
+│   │   ├── particle
+│   │   │   ├── debug_log.cpp
+│   │   │   └── ei_classifier_porting.cpp
+│   │   ├── posix
+│   │   │   ├── debug_log.cpp
+│   │   │   └── ei_classifier_porting.cpp
+│   │   ├── raspberry
+│   │   │   └── ei_classifier_porting.cpp
+│   │   ├── renesas-ra
+│   │   │   ├── debug_log.cpp
+│   │   │   └── ei_classifier_porting.cpp
+│   │   ├── seeed-vision-ai
+│   │   │   ├── debug_log.cpp
+│   │   │   └── ei_classifier_porting.cpp
+│   │   ├── silabs
+│   │   │   ├── debug_log.cpp
+│   │   │   └── ei_classifier_porting.cpp
+│   │   ├── sony
+│   │   │   ├── debug_log.cpp
+│   │   │   └── ei_classifier_porting.cpp
+│   │   ├── stm32-cubeai
+│   │   │   ├── debug_log.cpp
+│   │   │   └── ei_classifier_porting.cpp
+│   │   ├── synaptics
+│   │   │   ├── debug_log.cpp
+│   │   │   └── ei_classifier_porting.cpp
+│   │   ├── ti
+│   │   │   ├── debug_log.cpp
+│   │   │   └── ei_classifier_porting.cpp
+│   │   └── zephyr
+│   │       ├── debug_log.cpp
+│   │       └── ei_classifier_porting.cpp
+│   ├── README.md
+│   ├── sources.txt
+│   ├── tensorflow
+│   │   ├── LICENSE
+│   │   └── lite
+│   │       ├── builtin_op_data.h
+│   │       ├── builtin_ops.h
+│   │       ├── c
+│   │       │   ├── builtin_op_data.h
+│   │       │   ├── c_api_types.h
+│   │       │   ├── common.c
+│   │       │   └── common.h
+│   │       ├── context_util.h
+│   │       ├── core
+│   │       │   ├── api
+│   │       │   │   ├── common.cc
+│   │       │   │   ├── error_reporter.cc
+│   │       │   │   ├── error_reporter.h
+│   │       │   │   ├── flatbuffer_conversions.cc
+│   │       │   │   ├── flatbuffer_conversions.h
+│   │       │   │   ├── op_resolver.cc
+│   │       │   │   ├── op_resolver.h
+│   │       │   │   ├── tensor_utils.cc
+│   │       │   │   └── tensor_utils.h
+│   │       │   └── c
+│   │       │       ├── builtin_op_data.h
+│   │       │       ├── c_api_types.h
+│   │       │       └── common.h
+│   │       ├── kernels
+│   │       │   ├── custom
+│   │       │   │   ├── tree_ensemble_classifier.cc
+│   │       │   │   └── tree_ensemble_classifier.h
+│   │       │   ├── internal
+│   │       │   │   ├── common.h
+│   │       │   │   ├── compatibility.h
+│   │       │   │   ├── cppmath.h
+│   │       │   │   ├── max.h
+│   │       │   │   ├── min.h
+│   │       │   │   ├── optimized
+│   │       │   │   │   └── neon_check.h
+│   │       │   │   ├── portable_tensor_utils.cc
+│   │       │   │   ├── portable_tensor_utils.h
+│   │       │   │   ├── portable_tensor.h
+│   │       │   │   ├── quantization_util.cc
+│   │       │   │   ├── quantization_util.h
+│   │       │   │   ├── reduce_common.h
+│   │       │   │   ├── reference
+│   │       │   │   │   ├── add_n.h
+│   │       │   │   │   ├── add.h
+│   │       │   │   │   ├── arg_min_max.h
+│   │       │   │   │   ├── batch_matmul.h
+│   │       │   │   │   ├── batch_to_space_nd.h
+│   │       │   │   │   ├── binary_function.h
+│   │       │   │   │   ├── broadcast_args.h
+│   │       │   │   │   ├── broadcast_to.h
+│   │       │   │   │   ├── ceil.h
+│   │       │   │   │   ├── comparisons.h
+│   │       │   │   │   ├── concatenation.h
+│   │       │   │   │   ├── conv.h
+│   │       │   │   │   ├── cumsum.h
+│   │       │   │   │   ├── depth_to_space.h
+│   │       │   │   │   ├── depthwiseconv_float.h
+│   │       │   │   │   ├── depthwiseconv_uint8.h
+│   │       │   │   │   ├── dequantize.h
+│   │       │   │   │   ├── div.h
+│   │       │   │   │   ├── elu.h
+│   │       │   │   │   ├── exp.h
+│   │       │   │   │   ├── fill.h
+│   │       │   │   │   ├── floor_div.h
+│   │       │   │   │   ├── floor_mod.h
+│   │       │   │   │   ├── floor.h
+│   │       │   │   │   ├── fully_connected.h
+│   │       │   │   │   ├── hard_swish.h
+│   │       │   │   │   ├── integer_ops
+│   │       │   │   │   │   ├── add.h
+│   │       │   │   │   │   ├── conv.h
+│   │       │   │   │   │   ├── depthwise_conv.h
+│   │       │   │   │   │   ├── fully_connected.h
+│   │       │   │   │   │   ├── l2normalization.h
+│   │       │   │   │   │   ├── logistic.h
+│   │       │   │   │   │   ├── mean.h
+│   │       │   │   │   │   ├── mul.h
+│   │       │   │   │   │   ├── pooling.h
+│   │       │   │   │   │   ├── tanh.h
+│   │       │   │   │   │   └── transpose_conv.h
+│   │       │   │   │   ├── l2normalization.h
+│   │       │   │   │   ├── leaky_relu.h
+│   │       │   │   │   ├── log_softmax.h
+│   │       │   │   │   ├── logistic.h
+│   │       │   │   │   ├── lstm_cell.h
+│   │       │   │   │   ├── maximum_minimum.h
+│   │       │   │   │   ├── mul.h
+│   │       │   │   │   ├── neg.h
+│   │       │   │   │   ├── pad.h
+│   │       │   │   │   ├── pooling.h
+│   │       │   │   │   ├── prelu.h
+│   │       │   │   │   ├── process_broadcast_shapes.h
+│   │       │   │   │   ├── quantize.h
+│   │       │   │   │   ├── reduce.h
+│   │       │   │   │   ├── requantize.h
+│   │       │   │   │   ├── resize_bilinear.h
+│   │       │   │   │   ├── resize_nearest_neighbor.h
+│   │       │   │   │   ├── round.h
+│   │       │   │   │   ├── scatter_nd.h
+│   │       │   │   │   ├── select.h
+│   │       │   │   │   ├── slice.h
+│   │       │   │   │   ├── softmax.h
+│   │       │   │   │   ├── space_to_batch_nd.h
+│   │       │   │   │   ├── space_to_depth.h
+│   │       │   │   │   ├── strided_slice.h
+│   │       │   │   │   ├── sub.h
+│   │       │   │   │   ├── tanh.h
+│   │       │   │   │   ├── transpose_conv.h
+│   │       │   │   │   └── transpose.h
+│   │       │   │   ├── reference_portable_tensor_utils_impl.h
+│   │       │   │   ├── reference_portable_tensor_utils.cc
+│   │       │   │   ├── reference_portable_tensor_utils.h
+│   │       │   │   ├── runtime_shape.h
+│   │       │   │   ├── strided_slice_logic.h
+│   │       │   │   ├── tensor_ctypes.h
+│   │       │   │   ├── tensor_utils.cc
+│   │       │   │   └── types.h
+│   │       │   ├── kernel_util_lite.cc
+│   │       │   ├── kernel_util.h
+│   │       │   ├── op_macros.h
+│   │       │   └── padding.h
+│   │       ├── micro
+│   │       │   ├── all_ops_resolver.cc
+│   │       │   ├── all_ops_resolver.h
+│   │       │   ├── compatibility.h
+│   │       │   ├── debug_log.h
+│   │       │   ├── fake_micro_context.cc
+│   │       │   ├── fake_micro_context.h
+│   │       │   ├── flatbuffer_conversions_bridge.cc
+│   │       │   ├── flatbuffer_conversions_bridge.h
+│   │       │   ├── flatbuffer_utils.cc
+│   │       │   ├── flatbuffer_utils.h
+│   │       │   ├── ibuffer_allocator.h
+│   │       │   ├── kernels
+│   │       │   │   ├── activation_utils.h
+│   │       │   │   ├── activations_common.cc
+│   │       │   │   ├── activations.cc
+│   │       │   │   ├── activations.h
+│   │       │   │   ├── add_common.cc
+│   │       │   │   ├── add_n.cc
+│   │       │   │   ├── add.cc
+│   │       │   │   ├── add.h
+│   │       │   │   ├── arg_min_max.cc
+│   │       │   │   ├── assign_variable.cc
+│   │       │   │   ├── batch_matmul.cc
+│   │       │   │   ├── batch_to_space_nd.cc
+│   │       │   │   ├── broadcast_args.cc
+│   │       │   │   ├── broadcast_to.cc
+│   │       │   │   ├── call_once.cc
+│   │       │   │   ├── cast.cc
+│   │       │   │   ├── ceil.cc
+│   │       │   │   ├── circular_buffer_common.cc
+│   │       │   │   ├── circular_buffer_flexbuffers_generated_data.h
+│   │       │   │   ├── circular_buffer.cc
+│   │       │   │   ├── circular_buffer.h
+│   │       │   │   ├── comparisons.cc
+│   │       │   │   ├── complex_abs.cc
+│   │       │   │   ├── concatenation.cc
+│   │       │   │   ├── conv_common.cc
+│   │       │   │   ├── conv_test.h
+│   │       │   │   ├── conv.cc
+│   │       │   │   ├── conv.h
+│   │       │   │   ├── cumsum.cc
+│   │       │   │   ├── depth_to_space.cc
+│   │       │   │   ├── depthwise_conv_common.cc
+│   │       │   │   ├── depthwise_conv.cc
+│   │       │   │   ├── depthwise_conv.h
+│   │       │   │   ├── dequantize_common.cc
+│   │       │   │   ├── dequantize.cc
+│   │       │   │   ├── dequantize.h
+│   │       │   │   ├── detection_postprocess_flexbuffers_generated_data.h
+│   │       │   │   ├── detection_postprocess.cc
+│   │       │   │   ├── div.cc
+│   │       │   │   ├── elementwise.cc
+│   │       │   │   ├── elu.cc
+│   │       │   │   ├── ethosu.cc
+│   │       │   │   ├── ethosu.h
+│   │       │   │   ├── exp.cc
+│   │       │   │   ├── expand_dims.cc
+│   │       │   │   ├── fill.cc
+│   │       │   │   ├── floor_div.cc
+│   │       │   │   ├── floor_mod.cc
+│   │       │   │   ├── floor.cc
+│   │       │   │   ├── fully_connected_common.cc
+│   │       │   │   ├── fully_connected.cc
+│   │       │   │   ├── fully_connected.h
+│   │       │   │   ├── gather_nd.cc
+│   │       │   │   ├── gather.cc
+│   │       │   │   ├── hard_swish_common.cc
+│   │       │   │   ├── hard_swish.cc
+│   │       │   │   ├── hard_swish.h
+│   │       │   │   ├── if.cc
+│   │       │   │   ├── kernel_runner.cc
+│   │       │   │   ├── kernel_runner.h
+│   │       │   │   ├── kernel_util_micro.cc
+│   │       │   │   ├── kernel_util.h
+│   │       │   │   ├── l2_pool_2d.cc
+│   │       │   │   ├── l2norm.cc
+│   │       │   │   ├── leaky_relu_common.cc
+│   │       │   │   ├── leaky_relu.cc
+│   │       │   │   ├── leaky_relu.h
+│   │       │   │   ├── log_softmax.cc
+│   │       │   │   ├── logical_common.cc
+│   │       │   │   ├── logical.cc
+│   │       │   │   ├── logical.h
+│   │       │   │   ├── logistic_common.cc
+│   │       │   │   ├── logistic.cc
+│   │       │   │   ├── logistic.h
+│   │       │   │   ├── lstm_eval_test.h
+│   │       │   │   ├── lstm_eval.cc
+│   │       │   │   ├── lstm_eval.h
+│   │       │   │   ├── lstm_shared.h
+│   │       │   │   ├── maximum_minimum.cc
+│   │       │   │   ├── micro_ops.h
+│   │       │   │   ├── micro_tensor_utils.cc
+│   │       │   │   ├── micro_tensor_utils.h
+│   │       │   │   ├── mirror_pad.cc
+│   │       │   │   ├── mli_function_specializations.h
+│   │       │   │   ├── mli_interface.cc
+│   │       │   │   ├── mli_interface.h
+│   │       │   │   ├── mli_slicers.cc
+│   │       │   │   ├── mli_slicers.h
+│   │       │   │   ├── mli_tf_utils.h
+│   │       │   │   ├── mul_common.cc
+│   │       │   │   ├── mul.cc
+│   │       │   │   ├── mul.h
+│   │       │   │   ├── neg.cc
+│   │       │   │   ├── pack.cc
+│   │       │   │   ├── pad.cc
+│   │       │   │   ├── pad.h
+│   │       │   │   ├── pooling_common.cc
+│   │       │   │   ├── pooling.cc
+│   │       │   │   ├── pooling.h
+│   │       │   │   ├── prelu_common.cc
+│   │       │   │   ├── prelu.cc
+│   │       │   │   ├── prelu.h
+│   │       │   │   ├── quantize_common.cc
+│   │       │   │   ├── quantize.cc
+│   │       │   │   ├── quantize.h
+│   │       │   │   ├── read_variable.cc
+│   │       │   │   ├── real.cc
+│   │       │   │   ├── reduce_common.cc
+│   │       │   │   ├── reduce.cc
+│   │       │   │   ├── reduce.h
+│   │       │   │   ├── reshape.cc
+│   │       │   │   ├── resize_bilinear.cc
+│   │       │   │   ├── resize_nearest_neighbor.cc
+│   │       │   │   ├── rfft2d.cc
+│   │       │   │   ├── round.cc
+│   │       │   │   ├── scatter_nd.cc
+│   │       │   │   ├── scratch_buf_mgr.cc
+│   │       │   │   ├── scratch_buf_mgr.h
+│   │       │   │   ├── scratch_buffers.cc
+│   │       │   │   ├── scratch_buffers.h
+│   │       │   │   ├── select.cc
+│   │       │   │   ├── shape.cc
+│   │       │   │   ├── slice.cc
+│   │       │   │   ├── softmax_common.cc
+│   │       │   │   ├── softmax.cc
+│   │       │   │   ├── softmax.h
+│   │       │   │   ├── space_to_batch_nd.cc
+│   │       │   │   ├── space_to_depth.cc
+│   │       │   │   ├── split_v.cc
+│   │       │   │   ├── split.cc
+│   │       │   │   ├── squared_difference.cc
+│   │       │   │   ├── squeeze.cc
+│   │       │   │   ├── strided_slice.cc
+│   │       │   │   ├── sub_common.cc
+│   │       │   │   ├── sub.cc
+│   │       │   │   ├── sub.h
+│   │       │   │   ├── svdf_common.cc
+│   │       │   │   ├── svdf.cc
+│   │       │   │   ├── svdf.h
+│   │       │   │   ├── tanh.cc
+│   │       │   │   ├── tile.cc
+│   │       │   │   ├── topk_v2.cc
+│   │       │   │   ├── transpose_conv.cc
+│   │       │   │   ├── transpose.cc
+│   │       │   │   ├── tree_ensemble_classifier.cc
+│   │       │   │   ├── tree_ensemble_classifier.h
+│   │       │   │   ├── unidirectional_sequence_lstm.cc
+│   │       │   │   ├── unpack.cc
+│   │       │   │   ├── var_handle.cc
+│   │       │   │   ├── while.cc
+│   │       │   │   └── zeros_like.cc
+│   │       │   ├── memory_helpers.cc
+│   │       │   ├── memory_helpers.h
+│   │       │   ├── memory_planner
+│   │       │   │   ├── greedy_memory_planner.cc
+│   │       │   │   ├── greedy_memory_planner.h
+│   │       │   │   ├── linear_memory_planner.cc
+│   │       │   │   ├── linear_memory_planner.h
+│   │       │   │   ├── memory_plan_struct.h
+│   │       │   │   ├── micro_memory_planner.h
+│   │       │   │   ├── non_persistent_buffer_planner_shim.cc
+│   │       │   │   └── non_persistent_buffer_planner_shim.h
+│   │       │   ├── micro_allocation_info.cc
+│   │       │   ├── micro_allocation_info.h
+│   │       │   ├── micro_allocator.cc
+│   │       │   ├── micro_allocator.h
+│   │       │   ├── micro_arena_constants.h
+│   │       │   ├── micro_context.cc
+│   │       │   ├── micro_context.h
+│   │       │   ├── micro_error_reporter.cc
+│   │       │   ├── micro_error_reporter.h
+│   │       │   ├── micro_graph.cc
+│   │       │   ├── micro_graph.h
+│   │       │   ├── micro_interpreter.cc
+│   │       │   ├── micro_interpreter.h
+│   │       │   ├── micro_log.cc
+│   │       │   ├── micro_log.h
+│   │       │   ├── micro_mutable_op_resolver.h
+│   │       │   ├── micro_op_resolver.h
+│   │       │   ├── micro_profiler_interface.h
+│   │       │   ├── micro_profiler.cc
+│   │       │   ├── micro_profiler.h
+│   │       │   ├── micro_resource_variable.cc
+│   │       │   ├── micro_resource_variable.h
+│   │       │   ├── micro_string.cc
+│   │       │   ├── micro_string.h
+│   │       │   ├── micro_time.cc
+│   │       │   ├── micro_time.h
+│   │       │   ├── micro_utils.cc
+│   │       │   ├── micro_utils.h
+│   │       │   ├── mock_micro_graph.cc
+│   │       │   ├── mock_micro_graph.h
+│   │       │   ├── non_persistent_arena_buffer_allocator.cc
+│   │       │   ├── non_persistent_arena_buffer_allocator.h
+│   │       │   ├── op_resolver_bridge.cc
+│   │       │   ├── op_resolver_bridge.h
+│   │       │   ├── persistent_arena_buffer_allocator.cc
+│   │       │   ├── persistent_arena_buffer_allocator.h
+│   │       │   ├── recording_micro_allocator.cc
+│   │       │   ├── recording_micro_allocator.h
+│   │       │   ├── recording_micro_interpreter.h
+│   │       │   ├── recording_single_arena_buffer_allocator.cc
+│   │       │   ├── recording_single_arena_buffer_allocator.h
+│   │       │   ├── schema_utils.cc
+│   │       │   ├── single_arena_buffer_allocator.cc
+│   │       │   ├── single_arena_buffer_allocator.h
+│   │       │   ├── system_setup.cc
+│   │       │   ├── system_setup.h
+│   │       │   ├── test_helper_custom_ops.cc
+│   │       │   ├── test_helper_custom_ops.h
+│   │       │   ├── test_helpers.cc
+│   │       │   └── test_helpers.h
+│   │       ├── portable_type_to_tflitetype.h
+│   │       └── schema
+│   │           ├── schema_generated_full.h
+│   │           ├── schema_generated.h
+│   │           └── schema_utils.h
+│   └── third_party
+│       ├── arc_mli_package
+│       │   ├── bin
+│       │   │   └── emsdp_em11d_em9d_dfss
+│       │   │       └── release
+│       │   │           └── libmli.a
+│       │   ├── include
+│       │   │   ├── api
+│       │   │   │   ├── mli_helpers_api.h
+│       │   │   │   ├── mli_kernels_api.h
+│       │   │   │   ├── mli_krn_avepool_spec_api.h
+│       │   │   │   ├── mli_krn_conv2d_spec_api.h
+│       │   │   │   ├── mli_krn_depthwise_conv2d_spec_api.h
+│       │   │   │   ├── mli_krn_maxpool_spec_api.h
+│       │   │   │   └── mli_mov_api.h
+│       │   │   ├── mli_api.h
+│       │   │   ├── mli_config.h
+│       │   │   └── mli_types.h
+│       │   └── LICENSE
+│       ├── flatbuffers
+│       │   ├── include
+│       │   │   └── flatbuffers
+│       │   │       ├── fb_allocator.h
+│       │   │       ├── fb_array.h
+│       │   │       ├── fb_base.h
+│       │   │       ├── fb_buffer_ref.h
+│       │   │       ├── fb_buffer.h
+│       │   │       ├── fb_default_allocator.h
+│       │   │       ├── fb_detached_buffer.h
+│       │   │       ├── fb_flatbuffer_builder.h
+│       │   │       ├── fb_stl_emulation.h
+│       │   │       ├── fb_string.h
+│       │   │       ├── fb_struct.h
+│       │   │       ├── fb_table.h
+│       │   │       ├── fb_util.h
+│       │   │       ├── fb_vector_downward.h
+│       │   │       ├── fb_vector.h
+│       │   │       ├── fb_verifier.h
+│       │   │       ├── flatbuffers.h
+│       │   │       └── flexbuffers.h
+│       │   └── LICENSE.txt
+│       ├── gemmlowp
+│       │   ├── fixedpoint
+│       │   │   ├── fixedpoint_neon.h
+│       │   │   ├── fixedpoint_sse.h
+│       │   │   └── fixedpoint.h
+│       │   ├── internal
+│       │   │   └── detect_platform.h
+│       │   └── LICENSE
+│       ├── incbin
+│       │   └── incbin.h
+│       └── ruy
+│           └── ruy
+│               └── profiler
+│                   └── instrumentation.h
+├── generate_mri_images.py
+├── model_to_header.py
+├── model-parameters
+│   ├── model_metadata.h
+│   └── model_variables.h
+├── mri_gesture_viewer.py
+├── mri_images
+│   ├── brain_slice_000.png
+│   ├── brain_slice_001.png
+│   ├── brain_slice_002.png
+│   ├── brain_slice_003.png
+│   ├── brain_slice_004.png
+│   ├── brain_slice_005.png
+│   ├── brain_slice_006.png
+│   ├── brain_slice_007.png
+│   ├── brain_slice_008.png
+│   ├── brain_slice_009.png
+│   ├── brain_slice_010.png
+│   ├── brain_slice_011.png
+│   ├── brain_slice_012.png
+│   ├── brain_slice_013.png
+│   ├── brain_slice_014.png
+│   ├── brain_slice_015.png
+│   ├── brain_slice_016.png
+│   ├── brain_slice_017.png
+│   ├── brain_slice_018.png
+│   ├── brain_slice_019.png
+│   ├── brain_slice_020.png
+│   ├── brain_slice_021.png
+│   ├── brain_slice_022.png
+│   ├── brain_slice_023.png
+│   ├── brain_slice_024.png
+│   ├── brain_slice_025.png
+│   ├── brain_slice_026.png
+│   ├── brain_slice_027.png
+│   ├── brain_slice_028.png
+│   └── brain_slice_029.png
+├── processed_data
+│   └── complete_dataset.csv
+├── README.md
+├── structure.txt
+├── tflite-model
+│   ├── tflite_learn_881836_3.cpp
+│   ├── tflite_learn_881836_3.h
+│   ├── tflite_learn_881836_3.tflite
+│   ├── tflite-resolver.h
+│   └── trained_model_ops_define.h
+└── wokwi_simulation
+    ├── diagram.json
+    ├── libraries.txt
+    ├── README.md
+    └── sketch.ino
+
+138 directories, 1424 files
